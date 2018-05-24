@@ -68,6 +68,16 @@ pip install -r requirements.txt
 * 利用BM25模型计算所有文本与搜索词的相关性（使用[gensim](https://radimrehurek.com/gensim/summarization/bm25.html)库）
 * 找到最相关的top20文本
 
+* 通过调整k1和b这两个参数，可以达到更好的效果
+
+|bm25 | mAP |
+|:------------|------------:|
+|k1=1.5, b=0.75 | 0.1137|
+|k1=1.5,b=0.85| 0.1182|
+|k1=1, b=1| 0.12|
+|k1=1.2, b=0.9| |
+|k1=1.4, b=0.85| 0.1185|
+
 ### average-word2vec
 1. 使用[jieba分词](https://github.com/fxsjy/jieba)对训练集数据进行分词
 2. 使用google提供的[word2vec](https://code.google.com/archive/p/word2vec/)对分词后的训练语料进行训练，得到词向量（命令行参数设置为：./word2vec -train ../path_corpus/corpus_train.txt -output ../path_corpus/vec.txt -cbow 1 -size 200 -window 5 -negative 0 -hs 1 -sample 1e-3 -iter 10 -binary 0 -min-count 0 -save-vocab ../path_corpus/vocab.txt
